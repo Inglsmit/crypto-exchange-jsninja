@@ -5,8 +5,14 @@ import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
 
 // import AutocompliteSimpleDemo from "./AutocompliteSimple";
-import AutocompliteSimpleDemo from "../components/Autocomplete/index";
+import DemoAutocompliteSimple from "./DemoAutocompliteSimple";
+
+const items = [
+  { label: "ETH", balance: "2.08" },
+  { label: "ETC", balance: "18.08" },
+  { label: "BTC", balance: "3.2" }
+];
 
 storiesOf("Crypto components", module).add("Autocomplete", () => (
-  <AutocompliteSimpleDemo />
+  <DemoAutocompliteSimple items={items} />
 ));

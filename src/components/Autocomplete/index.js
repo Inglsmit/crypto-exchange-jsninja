@@ -1,31 +1,38 @@
 import React from "react";
+
+// import withRender from "./hocs/withRender";
+
 import "./style.css";
 
-const items = [
-  { label: "ETH", balance: "2.08" },
-  { label: "ETC", balance: "18.08" },
-  { label: "BTC", balance: "3.2" }
-];
+// const items = [
+//   { label: "ETH", balance: "2.08" },
+//   { label: "ETC", balance: "18.08" },
+//   { label: "BTC", balance: "3.2" }
+// ];
 
 class Autocomplete extends React.Component {
+  static defaultProps = {
+    items: [],
+    onChange: () => {},
+    getItems: () => {}
+  };
+
   state = {
     value: "",
     opened: false
   };
 
   onSelectItem = item => event => {
-    // console.log(this.props, item);
     this.setState({ value: item.label, opened: false });
   };
 
   onChange = event => {
-    // console.log(this);
     this.setState({ value: event.target.value, opened: true });
-    // this.renderAutocompleteResult(event.target.value);
   };
 
   getItems = inputValue => {
     let count = 0;
+    const items = this.props.items;
 
     return items.filter(item => {
       const keep =
