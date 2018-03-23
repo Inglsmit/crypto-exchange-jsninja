@@ -1,34 +1,13 @@
 import React from "react";
 
-import Autocomplite from "../components/Autocomplete/index";
+import Autocomplite from "../components/Autocomplete/Autocomplete";
 
-export default class DemoAutocompliteSimple extends React.Component {
-  state = {
-    value: null,
-    items: this.props.items
-  };
+const items = [
+  { label: "ETH", balance: "2.08" },
+  { label: "ETC", balance: "18.08" },
+  { label: "BTC", balance: "3.2" }
+];
 
-  onChoseItem = item => {
-    this.setState({
-      value: item
-    });
-  };
-
-  getItems = text => {
-    this.setState({
-      items: this.props.items
-    });
-  };
-
-  render() {
-    const { items, value } = this.state;
-    return (
-      <Autocomplite
-        value={value}
-        items={items}
-        getItems={this.getItems}
-        onChange={this.onChoseItem}
-      />
-    );
-  }
+export default function DemoAutocompliteSimple() {
+  return <Autocomplite items={items} />;
 }
