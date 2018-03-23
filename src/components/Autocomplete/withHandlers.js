@@ -4,16 +4,17 @@ import React from "react";
 
 export default function withHandlers(Component) {
   class withHandlers extends React.Component {
-    constructor(props) {
-      super(props);
+    // constructor(props) {
+    // super(props);
 
-      this.state = { ...props };
-    }
+    // this.state = { ...props };
+    // }
 
     static defaultProps = {
       items: [],
       onChange: () => {},
-      getItems: () => {}
+      getItems: () => {},
+      onSelectItem: () => {}
     };
 
     state = {
