@@ -19,15 +19,25 @@ export default function withHandlers(Component) {
 
     state = {
       value: "",
-      opened: false
+      opened: false,
+      selected: false
     };
 
     onSelectItem = item => event => {
-      this.setState({ value: item.label, opened: false });
+      this.setState({ value: item.label, opened: false, selected: true });
     };
 
     onChange = event => {
-      this.setState({ value: event.target.value, opened: true });
+      this.setState({
+        value: event.target.value,
+        opened: true,
+        selected: false
+      });
+    };
+
+    onLostFocus = () => {
+      const value = this.state.selected == true ? this.state.value : "";
+      this.setState({ value: value, opened: false });
     };
 
     getItems = inputValue => {
@@ -56,6 +66,7 @@ export default function withHandlers(Component) {
           opened={this.state.opened}
           onChange={this.onChange}
           onSelectItem={this.onSelectItem}
+          onLostFocus={this.onLostFocus}
           getItems={this.getItems}
         />
       );

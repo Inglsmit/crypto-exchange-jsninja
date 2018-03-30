@@ -9,5 +9,5 @@ const items = [
 ];
 
 export default function DemoAutocompliteSimple() {
-  return <Autocomplite items={items} />;
+  return <Autocomplite format="detail" items={items} />;
 }
