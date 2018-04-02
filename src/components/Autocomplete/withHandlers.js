@@ -1,5 +1,5 @@
 import React from "react";
-
+import axios from "axios";
 // import getDisplayName from "../../../helpers/getDisplayName";
 
 export default function withHandlers(Component) {
@@ -41,21 +41,22 @@ export default function withHandlers(Component) {
     };
 
     getItems = inputValue => {
-      let count = 0;
-      const items = this.props.items;
+      return axios
+        .post(`http://localhost:5000/getitems`, { inputValue })
+        .then(r => console.log(r.data), e => console.log("Handler " + e));
 
-      return items.filter(item => {
-        const keep =
-          (!inputValue ||
-            item.label.toLowerCase().includes(inputValue.toLowerCase())) &&
-          count < 5;
-
-        if (keep) {
-          count += 1;
-        }
-
-        return keep;
-      });
+      // let count = 0;
+      // const items = this.props.items;
+      // return items.filter(item => {
+      //   const keep =
+      //     (!inputValue ||
+      //       item.label.toLowerCase().includes(inputValue.toLowerCase())) &&
+      //     count < 5;
+      //   if (keep) {
+      //     count += 1;
+      //   }
+      //   return keep;
+      // });
     };
 
     render() {
